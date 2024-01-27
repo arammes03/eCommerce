@@ -14,8 +14,11 @@ import { Product } from '../../../shared/models/product.model';
   styleUrl: './list.component.css',
 })
 export class ListComponent {
+  // Signals
   products = signal<Product[]>([]);
+  cart = signal<Product[]>([]);
 
+  // Constructor
   constructor() {
     const initProducts: Product[] = [
       {
@@ -64,8 +67,8 @@ export class ListComponent {
     this.products.set(initProducts);
   }
 
-  fromChild(event: string) {
-    console.log('Mensaje del padre');
-    console.log(event);
+  // Función que nos agrega un producto al carrito
+  addToCart(product: Product) {
+    this.cart.update((prevState) => [...prevState, product]);
   }
 }
