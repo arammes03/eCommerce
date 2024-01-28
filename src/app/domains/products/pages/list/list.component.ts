@@ -1,15 +1,15 @@
 import { Component, inject, signal } from '@angular/core';
 
 //Import componentes
-import { ProductComponent } from '../../components/product/product.component';
-import { HeaderComponent } from '../../../shared/components/header/header.component';
+import { ProductComponent } from '@products/components/product/product.component';
+import { HeaderComponent } from '@shared/components/header/header.component';
 
 // Import modelos
-import { Product } from '../../../shared/models/product.model';
+import { Product } from '@shared/models/product.model';
 
 // Import servicios
-import { CartService } from '../../../shared/services/cart.service';
-import { ProductService } from '../../../shared/services/product.service';
+import { CartService } from '@shared/services/cart.service';
+import { ProductService } from '@shared/services/product.service';
 
 @Component({
   selector: 'app-list',
