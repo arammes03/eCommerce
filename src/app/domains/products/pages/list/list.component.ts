@@ -1,11 +1,15 @@
 import { Component, inject, signal } from '@angular/core';
 
+//Import componentes
 import { ProductComponent } from '../../components/product/product.component';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 
 // Import modelos
 import { Product } from '../../../shared/models/product.model';
+
+// Import servicios
 import { CartService } from '../../../shared/services/cart.service';
+import { ProductService } from '../../../shared/services/product.service';
 
 @Component({
   selector: 'app-list',
@@ -17,55 +21,20 @@ import { CartService } from '../../../shared/services/cart.service';
 export class ListComponent {
   // Signals
   products = signal<Product[]>([]);
-  private cartService = inject(CartService);
 
-  // Constructor
-  constructor() {
-    const initProducts: Product[] = [
-      {
-        id: Date.now(),
-        title: 'Producto 1',
-        price: 200,
-        img: 'https://picsum.photos/640/640?r=25',
-        creationAt: new Date().toISOString(),
+  // Servicios
+  private cartService = inject(CartService);
+  private productService = inject(ProductService);
+
+  ngOnInit() {
+    this.productService.getProducts().subscribe({
+      next: (products) => {
+        this.products.set(products);
       },
-      {
-        id: Date.now(),
-        title: 'Producto 2',
-        price: 600,
-        img: 'https://picsum.photos/640/640?r=55',
-        creationAt: new Date().toISOString(),
+      error: (error) => {
+        console.error(error);
       },
-      {
-        id: Date.now(),
-        title: 'Producto 3',
-        price: 3,
-        img: 'https://picsum.photos/640/640?r=45',
-        creationAt: new Date().toISOString(),
-      },
-      {
-        id: Date.now(),
-        title: 'Producto 1',
-        price: 200,
-        img: 'https://picsum.photos/640/640?r=25',
-        creationAt: new Date().toISOString(),
-      },
-      {
-        id: Date.now(),
-        title: 'Producto 2',
-        price: 600,
-        img: 'https://picsum.photos/640/640?r=55',
-        creationAt: new Date().toISOString(),
-      },
-      {
-        id: Date.now(),
-        title: 'Producto 3',
-        price: 3,
-        img: 'https://picsum.photos/640/640?r=45',
-        creationAt: new Date().toISOString(),
-      },
-    ];
-    this.products.set(initProducts);
+    });
   }
 
   // Función que nos agrega un producto al carrito
