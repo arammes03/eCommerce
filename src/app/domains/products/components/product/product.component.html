@@ -15,7 +15,7 @@
       {{ product.price | currency : "€" : "symbol" : "1.0" }}
     </p>
     <p class="text-sm font-medium text-gray-500">
-      {{ product.creationAt }}
+      {{ product.creationAt | date }}
     </p>
     <!-- <p class="text-sm font-medium text-gray-500">{{ product.description }}</p> -->
     <button
