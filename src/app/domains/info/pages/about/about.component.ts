@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { CounterComponent } from '@shared/components/counter/counter.component';
 import { WaveAudioComponent } from '@info/components/wave-audio/wave-audio.component';
+import { HeaderComponent } from '@shared/components/header/header.component';
 
 import { HighlightDirective } from '@shared/directives/highlight.directive';
 
@@ -14,6 +15,7 @@ import { HighlightDirective } from '@shared/directives/highlight.directive';
     CounterComponent,
     WaveAudioComponent,
     HighlightDirective,
+    HeaderComponent,
   ],
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css'],
