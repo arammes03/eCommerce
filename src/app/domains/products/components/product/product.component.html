@@ -1,8 +1,11 @@
 <!-- Componente que se va a encargar de renderizar un producto -->
 <div class="group rounded-lg border">
-  <a href="#" class="w-full overflow-hidden rounded-t-lg bg-gray-200">
+  <a
+    [routerLink]="['/product', product.id]"
+    class="w-full overflow-hidden rounded-t-lg bg-gray-200"
+  >
     <img
-      [src]="product.images[0] || product.images[1] || product.images[2]"
+      [src]="product.image"
       [alt]="product.title"
       class="h-full w-full object-cover object-center group-hover:opacity-75"
     />
