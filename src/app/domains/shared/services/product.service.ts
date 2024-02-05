@@ -9,11 +9,11 @@ export class ProductService {
   private url = inject(HttpClient); // Permite hacer requests a http
 
   getProducts() {
-    return this.url.get<Product[]>('https://fakestoreapi.com/products');
+    return this.url.get<Product[]>('https://api.escuelajs.co/api/v1/products');
   }
 
   getProduct(id: string) {
-    return this.url.get<Product>(`https://fakestoreapi.com/products/${id}`);
+    return this.url.get<Product>(`https://api.escuelajs.co/api/v1/products/${id}`);
   }
 
   constructor() {}
